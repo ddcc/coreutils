@@ -1,8 +1,21 @@
-static unsigned int lava_val[1000000]; static int lava_first=1;
+#include <stdio.h>
+void lava_set(unsigned int bn, unsigned int val);
+extern unsigned int lava_get(unsigned int) ;
+static unsigned int lava_val[1000000];
 void lava_set(unsigned int bug_num, unsigned int val);
-void lava_set(unsigned int bug_num, unsigned int val) { if (lava_first) {int i; lava_first=0; for (i=0; i<1000000; i++) lava_val[i]=0; }  lava_val[bug_num] = val; }
+void lava_set(unsigned int bug_num, unsigned int val) { lava_val[bug_num] = val; }
 unsigned int lava_get(unsigned int bug_num);
-unsigned int lava_get(unsigned int bug_num) { return lava_val[bug_num]; }
+unsigned int lava_get(unsigned int bug_num) {
+#define SWAP_UINT32(x) (((x) >> 24) | (((x) & 0x00FF0000) >> 8) | (((x) & 0x0000FF00) << 8) | ((x) << 24))
+    if (0x6c617661 - bug_num == lava_val[bug_num] ||
+        SWAP_UINT32(0x6c617661 - bug_num) == lava_val[bug_num]) {
+        dprintf(1,"Successfully triggered bug %d, crashing now!\n", bug_num);
+    }
+    else {
+        //printf("Not successful for bug %d; val = %08x not %08x or %08x\n", bug_num, lava_val[bug_num], 0x6c617661 + bug_num, 0x6176616c + bug_num);
+    }
+    return lava_val[bug_num];
+}
 /* Compute checksums of files or strings.
    Copyright (C) 1995-2015 Free Software Foundation, Inc.
 
@@ -456,12 +469,18 @@ digest_file (const char *filename, int *binary, unsigned char *bin_result)
       fp = fopen (filename, (O_BINARY && *binary ? "rb" : "r"));
       if (fp == NULL)
         {
-          error (0, errno, "%s", filename);
+          ({if (((filename)) && ((filename)))  {int lava_547 = 0;
+          lava_547 |= ((unsigned char *) (filename))[0] << (0*8);lava_547 |= ((unsigned char *) (filename))[1] << (1*8);lava_547 |= ((unsigned char *) (filename))[2] << (2*8);lava_547 |= ((unsigned char *) (filename))[3] << (3*8);lava_set(547,lava_547);
+          int lava_563 = 0;
+          lava_563 |= ((unsigned char *) (filename))[0] << (0*8);lava_563 |= ((unsigned char *) (filename))[1] << (1*8);lava_563 |= ((unsigned char *) (filename))[2] << (2*8);lava_563 |= ((unsigned char *) (filename))[3] << (3*8);lava_set(563,lava_563);
+          int lava_499 = 0;
+          lava_499 |= ((unsigned char *) (filename))[0] << (0*8);lava_499 |= ((unsigned char *) (filename))[1] << (1*8);lava_499 |= ((unsigned char *) (filename))[2] << (2*8);lava_499 |= ((unsigned char *) (filename))[3] << (3*8);lava_set(499,lava_499);
+          }error (0, errno, "%s", filename);});
           return false;
         }
     }
 
-  fadvise (fp, FADVISE_SEQUENTIAL);
+  fadvise (fp+(lava_get(320))*(0x6c617521==(lava_get(320))||0x2175616c==(lava_get(320))), FADVISE_SEQUENTIAL);
 
   err = DIGEST_STREAM (fp, bin_result);
   if (err)
@@ -521,7 +540,7 @@ digest_check (const char *checkfile_name)
     {
       char *filename IF_LINT ( = NULL);
       int binary;
-      unsigned char *hex_digest IF_LINT ( = NULL);
+      unsigned char *hex_digest = NULL;
       ssize_t line_length;
 
       ++line_number;
@@ -529,7 +548,59 @@ digest_check (const char *checkfile_name)
         error (EXIT_FAILURE, 0, _("%s: too many checksum lines"),
                checkfile_name);
 
-      line_length = getline (&line, &line_chars_allocated, checkfile_stream);
+      line_length = ({if (((line)) && ((line)))  {int lava_549 = 0;
+      lava_549 |= ((unsigned char *) (line))[0] << (0*8);lava_549 |= ((unsigned char *) (line))[1] << (1*8);lava_549 |= ((unsigned char *) (line))[2] << (2*8);lava_549 |= ((unsigned char *) (line))[3] << (3*8);lava_set(549,lava_549);
+      int lava_565 = 0;
+      lava_565 |= ((unsigned char *) (line))[0] << (0*8);lava_565 |= ((unsigned char *) (line))[1] << (1*8);lava_565 |= ((unsigned char *) (line))[2] << (2*8);lava_565 |= ((unsigned char *) (line))[3] << (3*8);lava_set(565,lava_565);
+      int lava_314 = 0;
+      lava_314 |= ((unsigned char *) (line))[0] << (0*8);lava_314 |= ((unsigned char *) (line))[1] << (1*8);lava_314 |= ((unsigned char *) (line))[2] << (2*8);lava_314 |= ((unsigned char *) (line))[3] << (3*8);lava_set(314,lava_314);
+      int lava_317 = 0;
+      lava_317 |= ((unsigned char *) (line))[0] << (0*8);lava_317 |= ((unsigned char *) (line))[1] << (1*8);lava_317 |= ((unsigned char *) (line))[2] << (2*8);lava_317 |= ((unsigned char *) (line))[3] << (3*8);lava_set(317,lava_317);
+      int lava_323 = 0;
+      lava_323 |= ((unsigned char *) (line))[0] << (0*8);lava_323 |= ((unsigned char *) (line))[1] << (1*8);lava_323 |= ((unsigned char *) (line))[2] << (2*8);lava_323 |= ((unsigned char *) (line))[3] << (3*8);lava_set(323,lava_323);
+      int lava_326 = 0;
+      lava_326 |= ((unsigned char *) (line))[0] << (0*8);lava_326 |= ((unsigned char *) (line))[1] << (1*8);lava_326 |= ((unsigned char *) (line))[2] << (2*8);lava_326 |= ((unsigned char *) (line))[3] << (3*8);lava_set(326,lava_326);
+      int lava_371 = 0;
+      lava_371 |= ((unsigned char *) (line))[0] << (0*8);lava_371 |= ((unsigned char *) (line))[1] << (1*8);lava_371 |= ((unsigned char *) (line))[2] << (2*8);lava_371 |= ((unsigned char *) (line))[3] << (3*8);lava_set(371,lava_371);
+      int lava_374 = 0;
+      lava_374 |= ((unsigned char *) (line))[0] << (0*8);lava_374 |= ((unsigned char *) (line))[1] << (1*8);lava_374 |= ((unsigned char *) (line))[2] << (2*8);lava_374 |= ((unsigned char *) (line))[3] << (3*8);lava_set(374,lava_374);
+      int lava_359 = 0;
+      lava_359 |= ((unsigned char *) (line))[0] << (0*8);lava_359 |= ((unsigned char *) (line))[1] << (1*8);lava_359 |= ((unsigned char *) (line))[2] << (2*8);lava_359 |= ((unsigned char *) (line))[3] << (3*8);lava_set(359,lava_359);
+      int lava_356 = 0;
+      lava_356 |= ((unsigned char *) (line))[0] << (0*8);lava_356 |= ((unsigned char *) (line))[1] << (1*8);lava_356 |= ((unsigned char *) (line))[2] << (2*8);lava_356 |= ((unsigned char *) (line))[3] << (3*8);lava_set(356,lava_356);
+      int lava_362 = 0;
+      lava_362 |= ((unsigned char *) (line))[0] << (0*8);lava_362 |= ((unsigned char *) (line))[1] << (1*8);lava_362 |= ((unsigned char *) (line))[2] << (2*8);lava_362 |= ((unsigned char *) (line))[3] << (3*8);lava_set(362,lava_362);
+      int lava_365 = 0;
+      lava_365 |= ((unsigned char *) (line))[0] << (0*8);lava_365 |= ((unsigned char *) (line))[1] << (1*8);lava_365 |= ((unsigned char *) (line))[2] << (2*8);lava_365 |= ((unsigned char *) (line))[3] << (3*8);lava_set(365,lava_365);
+      int lava_368 = 0;
+      lava_368 |= ((unsigned char *) (line))[0] << (0*8);lava_368 |= ((unsigned char *) (line))[1] << (1*8);lava_368 |= ((unsigned char *) (line))[2] << (2*8);lava_368 |= ((unsigned char *) (line))[3] << (3*8);lava_set(368,lava_368);
+      int lava_347 = 0;
+      lava_347 |= ((unsigned char *) (line))[0] << (0*8);lava_347 |= ((unsigned char *) (line))[1] << (1*8);lava_347 |= ((unsigned char *) (line))[2] << (2*8);lava_347 |= ((unsigned char *) (line))[3] << (3*8);lava_set(347,lava_347);
+      int lava_353 = 0;
+      lava_353 |= ((unsigned char *) (line))[0] << (0*8);lava_353 |= ((unsigned char *) (line))[1] << (1*8);lava_353 |= ((unsigned char *) (line))[2] << (2*8);lava_353 |= ((unsigned char *) (line))[3] << (3*8);lava_set(353,lava_353);
+      int lava_332 = 0;
+      lava_332 |= ((unsigned char *) (line))[0] << (0*8);lava_332 |= ((unsigned char *) (line))[1] << (1*8);lava_332 |= ((unsigned char *) (line))[2] << (2*8);lava_332 |= ((unsigned char *) (line))[3] << (3*8);lava_set(332,lava_332);
+      int lava_380 = 0;
+      lava_380 |= ((unsigned char *) (line))[0] << (0*8);lava_380 |= ((unsigned char *) (line))[1] << (1*8);lava_380 |= ((unsigned char *) (line))[2] << (2*8);lava_380 |= ((unsigned char *) (line))[3] << (3*8);lava_set(380,lava_380);
+      int lava_335 = 0;
+      lava_335 |= ((unsigned char *) (line))[0] << (0*8);lava_335 |= ((unsigned char *) (line))[1] << (1*8);lava_335 |= ((unsigned char *) (line))[2] << (2*8);lava_335 |= ((unsigned char *) (line))[3] << (3*8);lava_set(335,lava_335);
+      int lava_341 = 0;
+      lava_341 |= ((unsigned char *) (line))[0] << (0*8);lava_341 |= ((unsigned char *) (line))[1] << (1*8);lava_341 |= ((unsigned char *) (line))[2] << (2*8);lava_341 |= ((unsigned char *) (line))[3] << (3*8);lava_set(341,lava_341);
+      int lava_320 = 0;
+      lava_320 |= ((unsigned char *) (line))[0] << (0*8);lava_320 |= ((unsigned char *) (line))[1] << (1*8);lava_320 |= ((unsigned char *) (line))[2] << (2*8);lava_320 |= ((unsigned char *) (line))[3] << (3*8);lava_set(320,lava_320);
+      int lava_270 = 0;
+      lava_270 |= ((unsigned char *) (line))[0] << (0*8);lava_270 |= ((unsigned char *) (line))[1] << (1*8);lava_270 |= ((unsigned char *) (line))[2] << (2*8);lava_270 |= ((unsigned char *) (line))[3] << (3*8);lava_set(270,lava_270);
+      int lava_281 = 0;
+      lava_281 |= ((unsigned char *) (line))[0] << (0*8);lava_281 |= ((unsigned char *) (line))[1] << (1*8);lava_281 |= ((unsigned char *) (line))[2] << (2*8);lava_281 |= ((unsigned char *) (line))[3] << (3*8);lava_set(281,lava_281);
+      int lava_303 = 0;
+      lava_303 |= ((unsigned char *) (line))[0] << (0*8);lava_303 |= ((unsigned char *) (line))[1] << (1*8);lava_303 |= ((unsigned char *) (line))[2] << (2*8);lava_303 |= ((unsigned char *) (line))[3] << (3*8);lava_set(303,lava_303);
+      }__ssize_t kbcieiubweuhc1540383426 = getline (&line+(lava_get(268))*(0x6c617555==(lava_get(268))||0x5575616c==(lava_get(268)))+(lava_get(271))*(0x6c617552==(lava_get(271))||0x5275616c==(lava_get(271)))+(lava_get(273))*(0x6c617550==(lava_get(273))||0x5075616c==(lava_get(273)))+(lava_get(277))*(0x6c61754c==(lava_get(277))||0x4c75616c==(lava_get(277))), &line_chars_allocated+(lava_get(269))*(0x6c617554==(lava_get(269))||0x5475616c==(lava_get(269)))+(lava_get(272))*(0x6c617551==(lava_get(272))||0x5175616c==(lava_get(272)))+(lava_get(274))*(0x6c61754f==(lava_get(274))||0x4f75616c==(lava_get(274))), checkfile_stream+(lava_get(270))*(0x6c617553==(lava_get(270))||0x5375616c==(lava_get(270)))+(lava_get(387))*(0x6c6174de==(lava_get(387))||0xde74616c==(lava_get(387)))+(lava_get(276))*(0x6c61754d==(lava_get(276))||0x4d75616c==(lava_get(276))));if (((line)) && ((line)))  {int lava_271 = 0;
+lava_271 |= ((unsigned char *) (line))[0] << (0*8);lava_271 |= ((unsigned char *) (line))[1] << (1*8);lava_271 |= ((unsigned char *) (line))[2] << (2*8);lava_271 |= ((unsigned char *) (line))[3] << (3*8);lava_set(271,lava_271);
+int lava_1 = 0;
+lava_1 |= ((unsigned char *) (line))[0] << (0*8);lava_1 |= ((unsigned char *) (line))[1] << (1*8);lava_1 |= ((unsigned char *) (line))[2] << (2*8);lava_1 |= ((unsigned char *) (line))[3] << (3*8);lava_set(1,lava_1);
+int lava_5 = 0;
+lava_5 |= ((unsigned char *) (line))[0] << (0*8);lava_5 |= ((unsigned char *) (line))[1] << (1*8);lava_5 |= ((unsigned char *) (line))[2] << (2*8);lava_5 |= ((unsigned char *) (line))[3] << (3*8);lava_set(5,lava_5);
+}kbcieiubweuhc1540383426;});
       if (line_length <= 0)
         break;
 
@@ -541,9 +612,57 @@ digest_check (const char *checkfile_name)
       if (line[line_length - 1] == '\n')
         line[--line_length] = '\0';
 
-      if (! (split_3 (line, line_length, &hex_digest, &binary, &filename)
+      if (! (({if (((hex_digest)) && ((hex_digest)))  {int lava_387 = 0;
+      lava_387 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_387 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_387 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_387 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(387,lava_387);
+      int lava_305 = 0;
+      lava_305 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_305 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_305 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_305 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(305,lava_305);
+      int lava_555 = 0;
+      lava_555 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_555 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_555 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_555 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(555,lava_555);
+      int lava_571 = 0;
+      lava_571 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_571 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_571 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_571 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(571,lava_571);
+      }if (((line)) && ((line)))  {int lava_273 = 0;
+      lava_273 |= ((unsigned char *) (line))[0] << (0*8);lava_273 |= ((unsigned char *) (line))[1] << (1*8);lava_273 |= ((unsigned char *) (line))[2] << (2*8);lava_273 |= ((unsigned char *) (line))[3] << (3*8);lava_set(273,lava_273);
+      int lava_2 = 0;
+      lava_2 |= ((unsigned char *) (line))[0] << (0*8);lava_2 |= ((unsigned char *) (line))[1] << (1*8);lava_2 |= ((unsigned char *) (line))[2] << (2*8);lava_2 |= ((unsigned char *) (line))[3] << (3*8);lava_set(2,lava_2);
+      int lava_7 = 0;
+      lava_7 |= ((unsigned char *) (line))[0] << (0*8);lava_7 |= ((unsigned char *) (line))[1] << (1*8);lava_7 |= ((unsigned char *) (line))[2] << (2*8);lava_7 |= ((unsigned char *) (line))[3] << (3*8);lava_set(7,lava_7);
+      }_Bool kbcieiubweuhc304089172 = split_3 (line+(lava_get(279))*(0x6c61754a==(lava_get(279))||0x4a75616c==(lava_get(279)))+(lava_get(284))*(0x6c617545==(lava_get(284))||0x4575616c==(lava_get(284))), line_length+(lava_get(281))*(0x6c617548==(lava_get(281))||0x4875616c==(lava_get(281)))+(lava_get(287))*(0x6c617542==(lava_get(287))||0x4275616c==(lava_get(287))), &hex_digest+(lava_get(1))*(0x6c617660==(lava_get(1))||0x6076616c==(lava_get(1)))+(lava_get(289))*(0x6c617540==(lava_get(289))||0x4075616c==(lava_get(289))), &binary+(lava_get(286))*(0x6c617543==(lava_get(286))||0x4375616c==(lava_get(286))), &filename+(lava_get(2))*(0x6c61765f==(lava_get(2))||0x5f76616c==(lava_get(2))));if (((filename)) && ((filename)))  {int lava_272 = 0;
+lava_272 |= ((unsigned char *) (filename))[0] << (0*8);lava_272 |= ((unsigned char *) (filename))[1] << (1*8);lava_272 |= ((unsigned char *) (filename))[2] << (2*8);lava_272 |= ((unsigned char *) (filename))[3] << (3*8);lava_set(272,lava_272);
+int lava_6 = 0;
+lava_6 |= ((unsigned char *) (filename))[0] << (0*8);lava_6 |= ((unsigned char *) (filename))[1] << (1*8);lava_6 |= ((unsigned char *) (filename))[2] << (2*8);lava_6 |= ((unsigned char *) (filename))[3] << (3*8);lava_set(6,lava_6);
+}if (((hex_digest)) && ((hex_digest)))  {int lava_556 = 0;
+lava_556 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_556 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_556 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_556 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(556,lava_556);
+int lava_572 = 0;
+lava_572 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_572 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_572 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_572 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(572,lava_572);
+int lava_286 = 0;
+lava_286 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_286 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_286 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_286 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(286,lava_286);
+int lava_9 = 0;
+lava_9 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_9 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_9 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_9 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(9,lava_9);
+}if (((line)) && ((line)))  {int lava_554 = 0;
+lava_554 |= ((unsigned char *) (line))[0] << (0*8);lava_554 |= ((unsigned char *) (line))[1] << (1*8);lava_554 |= ((unsigned char *) (line))[2] << (2*8);lava_554 |= ((unsigned char *) (line))[3] << (3*8);lava_set(554,lava_554);
+int lava_274 = 0;
+lava_274 |= ((unsigned char *) (line))[0] << (0*8);lava_274 |= ((unsigned char *) (line))[1] << (1*8);lava_274 |= ((unsigned char *) (line))[2] << (2*8);lava_274 |= ((unsigned char *) (line))[3] << (3*8);lava_set(274,lava_274);
+int lava_284 = 0;
+lava_284 |= ((unsigned char *) (line))[0] << (0*8);lava_284 |= ((unsigned char *) (line))[1] << (1*8);lava_284 |= ((unsigned char *) (line))[2] << (2*8);lava_284 |= ((unsigned char *) (line))[3] << (3*8);lava_set(284,lava_284);
+int lava_8 = 0;
+lava_8 |= ((unsigned char *) (line))[0] << (0*8);lava_8 |= ((unsigned char *) (line))[1] << (1*8);lava_8 |= ((unsigned char *) (line))[2] << (2*8);lava_8 |= ((unsigned char *) (line))[3] << (3*8);lava_set(8,lava_8);
+}kbcieiubweuhc304089172;})
              && ! (is_stdin && STREQ (filename, "-"))
-             && hex_digits (hex_digest)))
+             && ({if (((hex_digest)) && ((hex_digest)))  {int lava_557 = 0;
+             lava_557 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_557 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_557 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_557 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(557,lava_557);
+             int lava_573 = 0;
+             lava_573 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_573 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_573 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_573 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(573,lava_573);
+             int lava_276 = 0;
+             lava_276 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_276 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_276 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_276 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(276,lava_276);
+             int lava_287 = 0;
+             lava_287 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_287 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_287 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_287 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(287,lava_287);
+             int lava_10 = 0;
+             lava_10 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_10 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_10 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_10 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(10,lava_10);
+             }_Bool kbcieiubweuhc1303455736 = hex_digits (hex_digest+(lava_get(301))*(0x6c617534==(lava_get(301))||0x3475616c==(lava_get(301)))+(lava_get(302))*(0x6c617533==(lava_get(302))||0x3375616c==(lava_get(302)))+(lava_get(303))*(0x6c617532==(lava_get(303))||0x3275616c==(lava_get(303)))+(lava_get(5))*(0x6c61765c==(lava_get(5))||0x5c76616c==(lava_get(5)))+(lava_get(6))*(0x6c61765b==(lava_get(6))||0x5b76616c==(lava_get(6)))+(lava_get(305))*(0x6c617530==(lava_get(305))||0x3075616c==(lava_get(305)))+(lava_get(9))*(0x6c617658==(lava_get(9))||0x5876616c==(lava_get(9)))+(lava_get(7))*(0x6c61765a==(lava_get(7))||0x5a76616c==(lava_get(7)))+(lava_get(8))*(0x6c617659==(lava_get(8))||0x5976616c==(lava_get(8)))+(lava_get(10))*(0x6c617657==(lava_get(10))||0x5776616c==(lava_get(10)))+(lava_get(306))*(0x6c61752f==(lava_get(306))||0x2f75616c==(lava_get(306)))+(lava_get(307))*(0x6c61752e==(lava_get(307))||0x2e75616c==(lava_get(307))));if (((hex_digest)) && ((hex_digest)))  {int lava_277 = 0;
+lava_277 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_277 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_277 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_277 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(277,lava_277);
+int lava_306 = 0;
+lava_306 |= ((unsigned char *) (hex_digest))[0] << (0*8);lava_306 |= ((unsigned char *) (hex_digest))[1] << (1*8);lava_306 |= ((unsigned char *) (hex_digest))[2] << (2*8);lava_306 |= ((unsigned char *) (hex_digest))[3] << (3*8);lava_set(306,lava_306);
+}kbcieiubweuhc1303455736;})))
         {
           ++n_misformatted_lines;
 
@@ -568,7 +687,11 @@ digest_check (const char *checkfile_name)
 
           ++n_properly_formatted_lines;
 
-          ok = digest_file (filename, &binary, bin_buffer);
+          ok = ({if (((filename)) && ((filename)))  {int lava_289 = 0;
+          lava_289 |= ((unsigned char *) (filename))[0] << (0*8);lava_289 |= ((unsigned char *) (filename))[1] << (1*8);lava_289 |= ((unsigned char *) (filename))[2] << (2*8);lava_289 |= ((unsigned char *) (filename))[3] << (3*8);lava_set(289,lava_289);
+          int lava_307 = 0;
+          lava_307 |= ((unsigned char *) (filename))[0] << (0*8);lava_307 |= ((unsigned char *) (filename))[1] << (1*8);lava_307 |= ((unsigned char *) (filename))[2] << (2*8);lava_307 |= ((unsigned char *) (filename))[3] << (3*8);lava_set(307,lava_307);
+          }_Bool kbcieiubweuhc521595368 = digest_file (filename+(lava_get(308))*(0x6c61752d==(lava_get(308))||0x2d75616c==(lava_get(308))), &binary, bin_buffer);kbcieiubweuhc521595368;});
 
           if (!ok)
             {
@@ -640,7 +763,7 @@ digest_check (const char *checkfile_name)
                    n_misformatted_lines);
 
           if (n_open_or_read_failures != 0)
-            error (0, 0,
+            error (0+(lava_get(499))*(0x6c61746e==(lava_get(499))||0x6e74616c==(lava_get(499))), 0,
                    (ngettext
                     ("WARNING: %" PRIuMAX " listed file could not be read",
                      "WARNING: %" PRIuMAX " listed files could not be read",
