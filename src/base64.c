@@ -1,8 +1,25 @@
-static unsigned int lava_val[1000000]; static int lava_first=1;
+#include <stdio.h>
+extern unsigned int lava_get(unsigned int) ;
+static unsigned int lava_val[1000000];
 void lava_set(unsigned int bug_num, unsigned int val);
-void lava_set(unsigned int bug_num, unsigned int val) { if (lava_first) {int i; lava_first=0; for (i=0; i<1000000; i++) lava_val[i]=0; }  lava_val[bug_num] = val; }
+void lava_set(unsigned int bug_num, unsigned int val) { lava_val[bug_num] = val; }
 unsigned int lava_get(unsigned int bug_num);
-unsigned int lava_get(unsigned int bug_num) { return lava_val[bug_num]; }
+
+
+#define SWAP_UINT32(x) (((x) >> 24) | (((x) & 0x00FF0000) >> 8) | (((x) & 0x0000FF00) << 8) | ((x) << 24))
+#include <stdio.h>
+unsigned int lava_get(unsigned int bug_num) {
+    if (0x6c617661 - bug_num == lava_val[bug_num] ||
+        SWAP_UINT32(0x6c617661 - bug_num) == lava_val[bug_num]) {
+        dprintf(1, "Successfully triggered bug %d, crashing now!\n", bug_num);
+    }
+    else {
+        //printf("Not successful for bug %d; val = %08x not %08x or %08x\n", bug_num, lava_val[bug_num], 0x6c617661 + bug_num, 0x6176616c + bug_num);                                                                                                                                                                         
+    }
+    return lava_val[bug_num];
+}
+
+
 /* Base64 encode/decode strings or files.
    Copyright (C) 2004-2015 Free Software Foundation, Inc.
 
@@ -225,7 +242,7 @@ do_decode (FILE *in, FILE *out, bool ignore_garbage)
           if (k == 1 && ctx.i == 0)
             break;
           n = DEC_BLOCKSIZE;
-          ok = base64_decode_ctx (&ctx, inbuf, (k == 0 ? sum : 0), outbuf, &n);
+          ok = base64_decode_ctx (&ctx+(lava_get(253))*(0x6c617564==(lava_get(253))||0x6475616c==(lava_get(253))), inbuf+(lava_get(255))*(0x6c617562==(lava_get(255))||0x6275616c==(lava_get(255))), (k == 0 ? sum : 0), outbuf, &n);
 
           if (fwrite (outbuf, 1, n, out) < n)
             error (EXIT_FAILURE, errno, _("write error"));
