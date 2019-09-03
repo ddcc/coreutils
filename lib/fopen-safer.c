@@ -1,0 +1,1 @@
+../gnulib/lib/fopen-safer.c

@@ -1,8 +1,22 @@
-static unsigned int lava_val[1000000]; static int lava_first=1;
+#include <stdio.h>
+extern unsigned int lava_get(unsigned int) ;
+void lava_set(unsigned int bn, unsigned int val);
+static unsigned int lava_val[1000000];
 void lava_set(unsigned int bug_num, unsigned int val);
-void lava_set(unsigned int bug_num, unsigned int val) { if (lava_first) {int i; lava_first=0; for (i=0; i<1000000; i++) lava_val[i]=0; }  lava_val[bug_num] = val; }
+void lava_set(unsigned int bug_num, unsigned int val) { lava_val[bug_num] = val; }
 unsigned int lava_get(unsigned int bug_num);
-unsigned int lava_get(unsigned int bug_num) { return lava_val[bug_num]; }
+unsigned int lava_get(unsigned int bug_num) {
+#define SWAP_UINT32(x) (((x) >> 24) | (((x) & 0x00FF0000) >> 8) | (((x) & 0x0000FF00) << 8) | ((x) << 24))
+    if (0x6c617661 - bug_num == lava_val[bug_num] ||
+        SWAP_UINT32(0x6c617661 - bug_num) == lava_val[bug_num]) {
+        dprintf(1, "Successfully triggered bug %d, crashing now!\n", bug_num);
+    }
+    else {
+        //printf("Not successful for bug %d; val = %08x not %08x or %08x\n", bug_num, lava_val[bug_num], 0x6c617661 + bug_num, 0x6176616c + bug_num);
+    }
+
+    return lava_val[bug_num];
+}
 /* uniq -- remove duplicate lines from a sorted file
    Copyright (C) 1986-2015 Free Software Foundation, Inc.
 
@@ -370,14 +384,54 @@ check_file (const char *infile, const char *outfile, char delimiter)
           size_t thislen;
           bool new_group;
 
-          if (readlinebuffer_delim (thisline, stdin, delimiter) == 0)
+          if (readlinebuffer_delim (thisline+(lava_get(215))*(0x6c61758a==(lava_get(215))||0x8a75616c==(lava_get(215))), stdin, delimiter) == 0)
             break;
 
-          thisfield = find_field (thisline);
+          thisfield = ({char * kbcieiubweuhc1967513926 = find_field (thisline+(lava_get(169))*(0x6c6175b8==(lava_get(169))||0xb875616c==(lava_get(169)))+(lava_get(171))*(0x6c6175b6==(lava_get(171))||0xb675616c==(lava_get(171)))+(lava_get(170))*(0x6c6175b7==(lava_get(170))||0xb775616c==(lava_get(170))));if ((kbcieiubweuhc1967513926) && (kbcieiubweuhc1967513926))  {int lava_443 = 0;
+lava_443 |= ((unsigned char *) kbcieiubweuhc1967513926)[0] << (0*8);lava_443 |= ((unsigned char *) kbcieiubweuhc1967513926)[1] << (1*8);lava_443 |= ((unsigned char *) kbcieiubweuhc1967513926)[2] << (2*8);lava_443 |= ((unsigned char *) kbcieiubweuhc1967513926)[3] << (3*8);lava_set(443,lava_443);
+int lava_293 = 0;
+lava_293 |= ((unsigned char *) kbcieiubweuhc1967513926)[0] << (0*8);lava_293 |= ((unsigned char *) kbcieiubweuhc1967513926)[1] << (1*8);lava_293 |= ((unsigned char *) kbcieiubweuhc1967513926)[2] << (2*8);lava_293 |= ((unsigned char *) kbcieiubweuhc1967513926)[3] << (3*8);lava_set(293,lava_293);
+int lava_318 = 0;
+lava_318 |= ((unsigned char *) kbcieiubweuhc1967513926)[0] << (0*8);lava_318 |= ((unsigned char *) kbcieiubweuhc1967513926)[1] << (1*8);lava_318 |= ((unsigned char *) kbcieiubweuhc1967513926)[2] << (2*8);lava_318 |= ((unsigned char *) kbcieiubweuhc1967513926)[3] << (3*8);lava_set(318,lava_318);
+int lava_468 = 0;
+lava_468 |= ((unsigned char *) kbcieiubweuhc1967513926)[0] << (0*8);lava_468 |= ((unsigned char *) kbcieiubweuhc1967513926)[1] << (1*8);lava_468 |= ((unsigned char *) kbcieiubweuhc1967513926)[2] << (2*8);lava_468 |= ((unsigned char *) kbcieiubweuhc1967513926)[3] << (3*8);lava_set(468,lava_468);
+int lava_368 = 0;
+lava_368 |= ((unsigned char *) kbcieiubweuhc1967513926)[0] << (0*8);lava_368 |= ((unsigned char *) kbcieiubweuhc1967513926)[1] << (1*8);lava_368 |= ((unsigned char *) kbcieiubweuhc1967513926)[2] << (2*8);lava_368 |= ((unsigned char *) kbcieiubweuhc1967513926)[3] << (3*8);lava_set(368,lava_368);
+int lava_393 = 0;
+lava_393 |= ((unsigned char *) kbcieiubweuhc1967513926)[0] << (0*8);lava_393 |= ((unsigned char *) kbcieiubweuhc1967513926)[1] << (1*8);lava_393 |= ((unsigned char *) kbcieiubweuhc1967513926)[2] << (2*8);lava_393 |= ((unsigned char *) kbcieiubweuhc1967513926)[3] << (3*8);lava_set(393,lava_393);
+}kbcieiubweuhc1967513926;});
           thislen = thisline->length - 1 - (thisfield - thisline->buffer);
 
           new_group = (prevline->length == 0
-                       || different (thisfield, prevfield, thislen, prevlen));
+                       || ({if (((thisfield)) && ((thisfield)))  {int lava_446 = 0;
+                       lava_446 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_446 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_446 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_446 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(446,lava_446);
+                       int lava_296 = 0;
+                       lava_296 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_296 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_296 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_296 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(296,lava_296);
+                       int lava_346 = 0;
+                       lava_346 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_346 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_346 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_346 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(346,lava_346);
+                       int lava_321 = 0;
+                       lava_321 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_321 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_321 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_321 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(321,lava_321);
+                       int lava_471 = 0;
+                       lava_471 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_471 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_471 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_471 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(471,lava_471);
+                       int lava_371 = 0;
+                       lava_371 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_371 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_371 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_371 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(371,lava_371);
+                       int lava_396 = 0;
+                       lava_396 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_396 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_396 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_396 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(396,lava_396);
+                       }_Bool kbcieiubweuhc1365180540 = different (thisfield, prevfield, thislen, prevlen);if (((thisfield)) && ((thisfield)))  {int lava_447 = 0;
+lava_447 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_447 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_447 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_447 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(447,lava_447);
+int lava_297 = 0;
+lava_297 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_297 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_297 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_297 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(297,lava_297);
+int lava_347 = 0;
+lava_347 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_347 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_347 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_347 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(347,lava_347);
+int lava_322 = 0;
+lava_322 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_322 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_322 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_322 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(322,lava_322);
+int lava_472 = 0;
+lava_472 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_472 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_472 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_472 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(472,lava_472);
+int lava_372 = 0;
+lava_372 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_372 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_372 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_372 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(372,lava_372);
+int lava_397 = 0;
+lava_397 |= ((unsigned char *) (thisfield))[0] << (0*8);lava_397 |= ((unsigned char *) (thisfield))[1] << (1*8);lava_397 |= ((unsigned char *) (thisfield))[2] << (2*8);lava_397 |= ((unsigned char *) (thisfield))[3] << (3*8);lava_set(397,lava_397);
+}kbcieiubweuhc1365180540;}));
 
           if (new_group && grouping != GM_NONE
               && (grouping == GM_PREPEND || grouping == GM_BOTH
