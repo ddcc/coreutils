@@ -4,4 +4,4 @@ void lava_set(unsigned int bug_num, unsigned int val) { if (lava_first) {int i; 
 unsigned int lava_get(unsigned int bug_num);
 unsigned int lava_get(unsigned int bug_num) { return lava_val[bug_num]; }
 #define LBRACKET 1
-#include "test.c"
+#include "test.copy.c"
